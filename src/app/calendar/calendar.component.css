@@ -1,0 +1,68 @@
+.calendar-table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: #fff;
+}
+
+.calendar-table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    width: 14.2%;
+}
+
+.calendar-table td,
+.calendar-table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.calendar-day {
+    height: 12vh;
+    max-height: 12vh;
+}
+
+.calendar-items-wrapper {
+    margin-left: -10px;
+    margin-right: -10px;
+    overflow-y: auto;
+    max-height: calc(100% - 20px);
+}
+
+.calendar-day.past-date {
+    color: rgb(174, 174, 174);
+    cursor: not-allowed !important;
+}
+
+.calendar-day:hover {
+    background-color: rgb(189, 189, 189);
+    cursor: pointer;
+}
+
+.weekend-date {
+    color: rgb(16, 110, 190);
+}
+
+textarea {
+    resize: none;
+}
+
+.btn {
+    padding: 0.175rem .75rem;
+}
+
+.red {
+    border: 1px solid red;
+    border-radius: 5px;
+}
+
+.green {
+    border: 1px solid green;
+    border-radius: 5px;
+}
+
+.yellow {
+    border: 1px solid yellow;
+    border-radius: 5px;
+}

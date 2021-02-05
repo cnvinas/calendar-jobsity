@@ -1,0 +1,54 @@
+<table class="table calendar-table" *ngIf="calendar">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Sunday</th>
+            <th scope="col">Monday</th>
+            <th scope="col">Tuesday</th>
+            <th scope="col">Wednesday</th>
+            <th scope="col">Thursday</th>
+            <th scope="col">Friday</th>
+            <th scope="col">Saturday</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of calendar | chunk: 7; let i = index">
+            <td class="calendar-day" [ngClass]="{'past-date': blurDate(c.date)}" *ngFor="let c of row; let j = index" (click)="scheduleATask($event)">
+                <div class="calendar-day-header" [ngClass]="{'weekend-date': isWeekend(c.date)}" [id]="'row_' + i + '_cell_' + j">
+                    <span>{{c.date.getDate()}}</span>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">New</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="registerForm" (ngSubmit)="createTask()">
+            <div class="form-group">
+                <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
+                    <label ngbButtonLabel class="btn-success">
+                      <input ngbButton type="radio" [value]="0"  formControlName="color"> Green
+                    </label>
+                    <label ngbButtonLabel class="btn-warning">
+                      <input ngbButton type="radio" [value]="1" formControlName="color"> Yellow
+                    </label>
+                    <label ngbButtonLabel class="btn-danger">
+                      <input ngbButton type="radio" [value]="2" formControlName="color"> Red
+                    </label>
+                </div>
+                <hr>
+                <div class="input-group">
+                    <textarea maxlength="30" rows="2" cols="30" formControlName="description"></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-outline-dark">Save</button>
+        </form>
+    </div>
+
+</ng-template>
